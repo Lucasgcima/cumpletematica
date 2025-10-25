@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucas 30 — Nu Metal Night</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <section class="hero">
+    <div class="wrap">
+      <span class="badge">Sábado 6 • Diciembre • 2025</span>
+      <h1 class="title">Lucas <span class="accent">30</span> — Nu Metal Night</h1>
+      <p class="punch">"30 años, riffs pesados y pogo asegurado". Venite a celebrar conmigo una noche a puro rock/nu metal de los 2000. Dress code: remera o look de cualquier banda de los 2000.</p>
+
+      <div class="cta-row">
+        <a class="btn" href="#info">Ver detalles</a>
+        <a class="btn alt" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Plat%C3%B3n+643,+San+Miguel,+Buenos+Aires">Ver mapa</a>
+        <button class="btn alt" id="playMusic">▶ Reproducir "Blind"</button>
+      </div>
+
+      <div class="stack">
+        <div class="card">
+          <div class="k-meta grid">
+            <div>
+              <div class="k-title">Cuándo</div>
+              <div class="k-big">Sábado 6/12/2025 — 21:00 hs</div>
+            </div>
+            <div>
+              <div class="k-title">Dónde</div>
+              <div class="k-big">Platón 643, San Miguel</div>
+            </div>
+            <div>
+              <div class="k-title">Tema</div>
+              <div class="k-big">Rock / Nu Metal 2000s</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" id="countdown">
+          <div class="k-title" style="margin-bottom:10px">Cuenta regresiva</div>
+          <div class="countdown" role="timer" aria-live="polite">
+            <div class="cd-box"><div class="cd-num" id="d">--</div><div class="cd-label">DÍAS</div></div>
+            <div class="cd-box"><div class="cd-num" id="h">--</div><div class="cd-label">HORAS</div></div>
+            <div class="cd-box"><div class="cd-num" id="m">--</div><div class="cd-label">MIN</div></div>
+            <div class="cd-box"><div class="cd-num" id="s">--</div><div class="cd-label">SEG</div></div>
+          </div>
+        </div>
+
+        <div class="card" id="music">
+          <div class="k-title" style="margin-bottom:10px">Música de fondo</div>
+          <audio id="bgAudio" preload="auto" loop>
+            <source src="blind_korn.mp3" type="audio/mpeg">
+          </audio>
+          <div class="play-overlay" id="overlay">
+            <button id="overlayBtn">▶ Reproducir</button>
+          </div>
+          <p class="small" style="margin-top:10px">Si no se activa automático, tocá reproducir. También podés abrir <a target="_blank" href="https://www.youtube.com/watch?v=ujE1-LqGJqE">\"Blind\" - Korn</a>.</p>
+        </div>
+
+        <div class="card" id="galeria">
+          <div class="k-title" style="margin-bottom:10px">Bandas 2000s — inspiración</div>
+          <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600" alt="Banda 1">
+            <img src="https://images.unsplash.com/photo-1516054575922-f0b9f1cf6fb8?q=80&w=600" alt="Banda 2">
+            <img src="https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?q=80&w=600" alt="Banda 3">
+            <img src="https://images.unsplash.com/photo-1483412103633-7badf83c6d0a?q=80&w=600" alt="Banda 4">
+          </div>
+        </div>
+
+        <div class="card" id="info">
+          <div class="k-title" style="margin-bottom:10px">Info útil</div>
+          <ul style="margin:0;padding-left:18px;line-height:1.8">
+            <li><strong>Dress code:</strong> cualquier banda de los 2000.</li>
+            <li><strong>Dirección:</strong> <a target="_blank" href="https://www.google.com/maps?q=Plat%C3%B3n+643,+San+Miguel,+Buenos+Aires">Platón 643, San Miguel</a>.</li>
+            <li><strong>Frase:</strong> \"Treinta inviernos, cero baladas.\"</li>
+          </ul>
+        </div>
+      </div>
+
+      <footer>
+        <span class="small">© Lucas — 2025 • Nos vemos en el pogo</span>
+      </footer>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
