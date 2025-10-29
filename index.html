@@ -12,12 +12,12 @@
     <div class="wrap">
       <span class="badge">Sábado 6 • Diciembre • 2025</span>
       <h1 class="title">Lucas <span class="accent">30</span> — Nu Metal Night</h1>
-      <p class="punch">"30 años, riffs pesados y pogo asegurado". Venite a celebrar conmigo una noche a puro rock/nu metal de los 2000. Dress code: remera o look de cualquier banda de los 2000.</p>
+      <p class="punch">Vení a festejar mis 30 años acompañado de las mejores bandas de los 2000.</p>
 
       <div class="cta-row">
         <a class="btn" href="#info">Ver detalles</a>
         <a class="btn alt" target="_blank" rel="noopener" href="https://www.google.com/maps?q=Plat%C3%B3n+643,+San+Miguel,+Buenos+Aires">Ver mapa</a>
-        <button class="btn alt" id="playMusic">▶ Reproducir "Blind"</button>
+        <button class="btn alt" id="playMusic">▶ Reproducir música</button>
       </div>
 
       <div class="stack">
@@ -48,42 +48,61 @@
           </div>
         </div>
 
-<div class="card" id="music">
-  <div class="k-title" style="margin-bottom:10px">Música de fondo</div>
+        <!-- MÚSICA -->
+        <div class="card" id="music">
+          <div class="k-title" style="margin-bottom:10px">Música de fondo</div>
 
-  <!-- Contenedor del reproductor invisible -->
-  <div id="player"></div>
+          <audio id="bgAudio" preload="auto" loop>
+            <source src="Korn - Blind.mp3" type="audio/mpeg">
+          </audio>
 
-  <!-- Botón Play/Pause -->
-  <button class="btn alt" id="ytToggle">▶ Reproducir música</button>
+          <div class="play-overlay" id="overlay">
+            <button id="overlayBtn">▶ Reproducir</button>
+          </div>
 
-  <p class="small" style="margin-top:10px">
-    Sonando: “Blind / Korn (YouTube)”. Si no se escucha automáticamente, tocá el botón.
-  </p>
-</div>
+          <p class="small" style="margin-top:10px">
+            Si no se escucha automáticamente, tocá el botón.
+          </p>
+        </div>
 
-<!-- API de YouTube -->
-<script src="https://www.youtube.com/iframe_api"></script>
-<script src="script.js"></script>
-
-
+        <!-- GALERÍA -->
         <div class="card" id="galeria">
           <div class="k-title" style="margin-bottom:10px">Bandas 2000s — inspiración</div>
           <div class="gallery">
-            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=600" alt="Banda 1">
-            <img src="https://images.unsplash.com/photo-1516054575922-f0b9f1cf6fb8?q=80&w=600" alt="Banda 2">
-            <img src="https://images.unsplash.com/photo-1483412033650-1015ddeb83d1?q=80&w=600" alt="Banda 3">
-            <img src="https://images.unsplash.com/photo-1483412103633-7badf83c6d0a?q=80&w=600" alt="Banda 4">
+            <img src="img/korn.jpeg" alt="Korn">
+            <img src="img/linkinpark.jpg" alt="Linkin Park">
+            <img src="img/blink182.jpg" alt="Blink-182">
+            <img src="img/soad.jpg" alt="System of a Down">
           </div>
         </div>
 
+        <!-- INFO -->
         <div class="card" id="info">
           <div class="k-title" style="margin-bottom:10px">Info útil</div>
           <ul style="margin:0;padding-left:18px;line-height:1.8">
             <li><strong>Dress code:</strong> cualquier banda de los 2000.</li>
             <li><strong>Dirección:</strong> <a target="_blank" href="https://www.google.com/maps?q=Plat%C3%B3n+643,+San+Miguel,+Buenos+Aires">Platón 643, San Miguel</a>.</li>
-            <li><strong>Frase:</strong> \"Treinta inviernos, cero baladas.\"</li>
           </ul>
+        </div>
+
+        <!-- FORMULARIO -->
+        <div class="card" id="asistencia">
+          <div class="k-title" style="margin-bottom:10px">Confirmación de asistencia</div>
+
+          <form class="asist-form">
+            <label for="asiste">¿Asistís?</label>
+            <select id="asiste" name="asiste" required>
+              <option value="si">Sí</option>
+              <option value="no">No</option>
+            </select>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre..." required>
+
+            <button type="submit" class="btn">Enviar</button>
+          </form>
+
+          <p class="small" id="form-msg" style="margin-top:10px;"></p>
         </div>
       </div>
 
@@ -93,6 +112,7 @@
     </div>
   </section>
 
+  <!-- ✅ SOLO UNA VEZ -->
   <script src="script.js"></script>
 </body>
 </html>

@@ -1,7 +1,8 @@
-// Fecha del evento (formato ISO con zona horaria Argentina -03:00)
+// ======================
+//  COUNTDOWN
+// ======================
 const EVENT_DATE = new Date('2025-12-06T21:00:00-03:00');
 
-// Countdown
 const dEl = document.getElementById('d');
 const hEl = document.getElementById('h');
 const mEl = document.getElementById('m');
@@ -12,7 +13,7 @@ function updateCountdown(){
   const diff = EVENT_DATE - now;
 
   if(diff <= 0){
-    dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = '00';
+    dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = "00";
     return;
   }
 
@@ -20,7 +21,7 @@ function updateCountdown(){
   const days = Math.floor(sec/86400);
   const hours = Math.floor((sec%86400)/3600);
   const mins = Math.floor((sec%3600)/60);
-  const secs = sec%60;
+  const secs = sec % 60;
 
   dEl.textContent = String(days).padStart(2,'0');
   hEl.textContent = String(hours).padStart(2,'0');
@@ -29,72 +30,88 @@ function updateCountdown(){
 }
 
 updateCountdown();
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown, 1000);
 
-// Música
+
+
+// ======================
+//  FORM A GOOGLE SHEETS
+// ======================
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyf9iYsqC6NIh3p57vAUzMNWWgXYKFozZfRhA_x3prgEl2YMQASCilbb_Iqs977nBPc/exec";
+
+const form = document.querySelector('.asist-form');
+const formMsg = document.getElementById('form-msg');
+
+if(form){
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const asistencia = document.getElementById('asiste').value;
+    const nombre = document.getElementById('nombre').value.trim();
+
+    if(!nombre){
+      formMsg.textContent = "⚠ Ingresá tu nombre antes de enviar.";
+      return;
+    }
+
+    const datos = {
+      nombre,
+      asiste: asistencia,
+      userAgent: navigator.userAgent
+    };
+
+    try {
+      await fetch(WEB_APP_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(datos)
+      });
+
+      if(asistencia === "si"){
+        formMsg.textContent = `✅ ¡Genial ${nombre}! Te esperamos 🎉`;
+      } else {
+        formMsg.textContent = `😢 Una lástima, ${nombre}. ¡Gracias por avisar!`;
+      }
+
+      form.reset();
+
+    } catch (err) {
+      console.error(err);
+      formMsg.textContent = "⚠ Hubo un problema, intentá de nuevo.";
+    }
+  });
+}
+
+
+// ======================
+//  AUDIO LOCAL PLAY/PAUSE
+// ======================
 const audio = document.getElementById('bgAudio');
 const overlay = document.getElementById('overlay');
 const overlayBtn = document.getElementById('overlayBtn');
 const playBtn = document.getElementById('playMusic');
 
 function userPlay(){
-  audio.volume = 1;
-  audio.play();
-  overlay.style.display='none';
-  playBtn.textContent='⏸️ Pausar música';
+  if(audio){
+    audio.volume = 1;
+    audio.play();
+    if(overlay) overlay.style.display = 'none';
+    if(playBtn) playBtn.textContent = "⏸️ Pausar música";
+  }
 }
 
-overlayBtn.addEventListener('click', userPlay);
+if(overlayBtn) overlayBtn.addEventListener('click', userPlay);
 
-playBtn.addEventListener('click', () => {
-  if(audio.paused){
-    userPlay();
-  } else {
-    audio.pause();
-    playBtn.textContent='▶ Reproducir "Blind"';
-  }
-});
-
-// Intento autoplay en silencio
-document.addEventListener('DOMContentLoaded', ()=>{
-  audio.volume = 0;
-  audio.play().then(()=>{
-    setTimeout(()=>{ audio.volume = 1; overlay.style.display='none'; }, 300);
-  }).catch(()=>{
-    console.log('Autoplay bloqueado');
-  });
-});
-
-let player;
-let isPlaying = false;
-
-// Cargar el reproductor de YouTube
-function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-    height: '0', // Invisible
-    width: '0',
-    videoId: '5_hIojjA3A4', // Tu link
-    playerVars: {
-      autoplay: 0,
-      loop: 1,
-      playlist: '5_hIojjA3A4'
+if(playBtn){
+  playBtn.addEventListener('click', () => {
+    if(audio){
+      if(audio.paused){
+        userPlay();
+      } else {
+        audio.pause();
+        playBtn.textContent = "▶ Reproducir música";
+      }
     }
   });
 }
-
-// Botón Play / Pause
-const ytBtn = document.getElementById('ytToggle');
-ytBtn.addEventListener('click', () => {
-  if (player && player.playVideo) {
-    if (!isPlaying) {
-      player.playVideo();
-      ytBtn.textContent = "⏸️ Pausar música";
-      isPlaying = true;
-    } else {
-      player.pauseVideo();
-      ytBtn.textContent = "▶ Reproducir música";
-      isPlaying = false;
-    }
-  }
-});
-
