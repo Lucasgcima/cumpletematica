@@ -209,3 +209,9 @@ footer{ text-align:center; margin-top:40px; color:#9f9f9f; }
   margin-top:10px;
 }
 
+.ytp-large-play-button, 
+.ytp-cued-thumbnail-overlay,
+.ytp-cued-thumbnail-overlay-image {
+  display: none !important;
+}
+
