@@ -64,3 +64,37 @@ document.addEventListener('DOMContentLoaded', ()=>{
     console.log('Autoplay bloqueado');
   });
 });
+
+let player;
+let isPlaying = false;
+
+// Cargar el reproductor de YouTube
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '0', // Invisible
+    width: '0',
+    videoId: '5_hIojjA3A4', // Tu link
+    playerVars: {
+      autoplay: 0,
+      loop: 1,
+      playlist: '5_hIojjA3A4'
+    }
+  });
+}
+
+// Botón Play / Pause
+const ytBtn = document.getElementById('ytToggle');
+ytBtn.addEventListener('click', () => {
+  if (player && player.playVideo) {
+    if (!isPlaying) {
+      player.playVideo();
+      ytBtn.textContent = "⏸️ Pausar música";
+      isPlaying = true;
+    } else {
+      player.pauseVideo();
+      ytBtn.textContent = "▶ Reproducir música";
+      isPlaying = false;
+    }
+  }
+});
+

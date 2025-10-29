@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lucas 30 — Nu Metal Night</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -48,16 +48,24 @@
           </div>
         </div>
 
-        <div class="card" id="music">
-          <div class="k-title" style="margin-bottom:10px">Música de fondo</div>
-          <audio id="bgAudio" preload="auto" loop>
-            <source src="blind_korn.mp3" type="audio/mpeg">
-          </audio>
-          <div class="play-overlay" id="overlay">
-            <button id="overlayBtn">▶ Reproducir</button>
-          </div>
-          <p class="small" style="margin-top:10px">Si no se activa automático, tocá reproducir. También podés abrir <a target="_blank" href="https://www.youtube.com/watch?v=ujE1-LqGJqE">\"Blind\" - Korn</a>.</p>
-        </div>
+<div class="card" id="music">
+  <div class="k-title" style="margin-bottom:10px">Música de fondo</div>
+
+  <!-- Contenedor del reproductor invisible -->
+  <div id="player"></div>
+
+  <!-- Botón Play/Pause -->
+  <button class="btn alt" id="ytToggle">▶ Reproducir música</button>
+
+  <p class="small" style="margin-top:10px">
+    Sonando: “Blind / Korn (YouTube)”. Si no se escucha automáticamente, tocá el botón.
+  </p>
+</div>
+
+<!-- API de YouTube -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="script.js"></script>
+
 
         <div class="card" id="galeria">
           <div class="k-title" style="margin-bottom:10px">Bandas 2000s — inspiración</div>
