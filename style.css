@@ -215,3 +215,22 @@ footer{ text-align:center; margin-top:40px; color:#9f9f9f; }
   display: none !important;
 }
 
+/* Oculta controles grandes de reproducción que pone el navegador en móviles */
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+/* Oculta cualquier overlay de reproducción automático */
+audio {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+#bgAudio {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
