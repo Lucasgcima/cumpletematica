@@ -1,55 +1,54 @@
 // ======================
 //  COUNTDOWN
 // ======================
-const EVENT_DATE = new Date('2025-12-06T21:00:00-03:00');
+const EVENT_DATE = new Date(2025, 11, 6, 21, 0, 0); // 6 diciembre 2025, 21:00
 
 const dEl = document.getElementById('d');
 const hEl = document.getElementById('h');
 const mEl = document.getElementById('m');
 const sEl = document.getElementById('s');
 
-function updateCountdown(){
+function updateCountdown() {
   const now = new Date();
   const diff = EVENT_DATE - now;
 
-  if(diff <= 0){
+  if (diff <= 0) {
     dEl.textContent = hEl.textContent = mEl.textContent = sEl.textContent = "00";
     return;
   }
 
-  const sec = Math.floor(diff/1000);
-  const days = Math.floor(sec/86400);
-  const hours = Math.floor((sec%86400)/3600);
-  const mins = Math.floor((sec%3600)/60);
+  const sec = Math.floor(diff / 1000);
+  const days = Math.floor(sec / 86400);
+  const hours = Math.floor((sec % 86400) / 3600);
+  const mins = Math.floor((sec % 3600) / 60);
   const secs = sec % 60;
 
-  dEl.textContent = String(days).padStart(2,'0');
-  hEl.textContent = String(hours).padStart(2,'0');
-  mEl.textContent = String(mins).padStart(2,'0');
-  sEl.textContent = String(secs).padStart(2,'0');
+  dEl.textContent = String(days).padStart(2, '0');
+  hEl.textContent = String(hours).padStart(2, '0');
+  mEl.textContent = String(mins).padStart(2, '0');
+  sEl.textContent = String(secs).padStart(2, '0');
 }
 
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
 
-
 // ======================
 //  FORM A GOOGLE SHEETS
 // ======================
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyf9iYsqC6NIh3p57vAUzMNWWgXYKFozZfRhA_x3prgEl2YMQASCilbb_Iqs977nBPc/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzFSP2f6T429mT-nBV8yGt_lYOhX7OsHpOhHR5K8AANiej38lXTB9pVolcnTzLfZiw2/exec";
 
 const form = document.querySelector('.asist-form');
 const formMsg = document.getElementById('form-msg');
 
-if(form){
+if (form) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const asistencia = document.getElementById('asiste').value;
     const nombre = document.getElementById('nombre').value.trim();
 
-    if(!nombre){
+    if (!nombre) {
       formMsg.textContent = "⚠ Ingresá tu nombre antes de enviar.";
       return;
     }
@@ -68,11 +67,9 @@ if(form){
         body: JSON.stringify(datos)
       });
 
-      if(asistencia === "si"){
-        formMsg.textContent = `✅ ¡Genial ${nombre}! Te esperamos 🎉`;
-      } else {
-        formMsg.textContent = `😢 Una lástima, ${nombre}. ¡Gracias por avisar!`;
-      }
+      formMsg.textContent = asistencia === "si"
+        ? `✅ ¡Genial ${nombre}! Te esperamos 🎉`
+        : `😢 Una lástima, ${nombre}. ¡Gracias por avisar!`;
 
       form.reset();
 
@@ -92,21 +89,21 @@ const overlay = document.getElementById('overlay');
 const overlayBtn = document.getElementById('overlayBtn');
 const playBtn = document.getElementById('playMusic');
 
-function userPlay(){
-  if(audio){
+function userPlay() {
+  if (audio) {
     audio.volume = 1;
     audio.play();
-    if(overlay) overlay.style.display = 'none';
-    if(playBtn) playBtn.textContent = "⏸️ Pausar música";
+    if (overlay) overlay.style.display = 'none';
+    if (playBtn) playBtn.textContent = "⏸️ Pausar música";
   }
 }
 
-if(overlayBtn) overlayBtn.addEventListener('click', userPlay);
+if (overlayBtn) overlayBtn.addEventListener('click', userPlay);
 
-if(playBtn){
+if (playBtn) {
   playBtn.addEventListener('click', () => {
-    if(audio){
-      if(audio.paused){
+    if (audio) {
+      if (audio.paused) {
         userPlay();
       } else {
         audio.pause();
@@ -116,10 +113,7 @@ if(playBtn){
   });
 }
 
-.mensaje-tomar {
-  animation: blink 1s infinite;
-}
-
 @keyframes blink {
   50% { opacity: 0.4; }
   }
+
