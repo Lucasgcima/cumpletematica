@@ -115,3 +115,11 @@ if(playBtn){
     }
   });
 }
+
+.mensaje-tomar {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.4; }
+  }
