@@ -234,3 +234,20 @@ audio {
   position: absolute;
   pointer-events: none;
 }
+
+.aviso-tomar {
+  text-align: center;
+  background: #111;
+  border: 2px solid red;
+  padding: 16px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.mensaje-tomar {
+  font-size: 22px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
