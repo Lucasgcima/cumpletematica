@@ -40,7 +40,7 @@
 
         <div class="card" id="countdown">
           <div class="k-title" style="margin-bottom:10px">Cuenta regresiva</div>
-          <div class="countdown" role="timer" aria-live="polite">
+          <div class="countdown" role="timer">
             <div class="cd-box"><div class="cd-num" id="d">--</div><div class="cd-label">DÍAS</div></div>
             <div class="cd-box"><div class="cd-num" id="h">--</div><div class="cd-label">HORAS</div></div>
             <div class="cd-box"><div class="cd-num" id="m">--</div><div class="cd-label">MIN</div></div>
@@ -48,7 +48,10 @@
           </div>
         </div>
 
-        <!-- MÚSICA -->
+        <div class="card aviso-tomar">
+          <p class="mensaje-tomar">⚠ Traer lo que van a tomar 🍻</p>
+        </div>
+
         <div class="card" id="music">
           <div class="k-title" style="margin-bottom:10px">Música de fondo</div>
 
@@ -56,16 +59,11 @@
             <source src="Korn - Blind.mp3" type="audio/mpeg">
           </audio>
 
-          <div class="play-overlay" id="overlay">
-            <button id="overlayBtn">▶ Reproducir</button>
-          </div>
-
           <p class="small" style="margin-top:10px">
             Si no se escucha automáticamente, tocá el botón.
           </p>
         </div>
 
-        <!-- GALERÍA -->
         <div class="card" id="galeria">
           <div class="k-title" style="margin-bottom:10px">Bandas 2000s — inspiración</div>
           <div class="gallery">
@@ -76,7 +74,6 @@
           </div>
         </div>
 
-        <!-- INFO -->
         <div class="card" id="info">
           <div class="k-title" style="margin-bottom:10px">Info útil</div>
           <ul style="margin:0;padding-left:18px;line-height:1.8">
@@ -85,7 +82,6 @@
           </ul>
         </div>
 
-        <!-- FORMULARIO -->
         <div class="card" id="asistencia">
           <div class="k-title" style="margin-bottom:10px">Confirmación de asistencia</div>
 
@@ -112,12 +108,7 @@
     </div>
   </section>
 
-  <!-- ✅ SOLO UNA VEZ -->
   <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
 
