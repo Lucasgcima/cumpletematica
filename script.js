@@ -29,7 +29,7 @@ function updateCountdown() {
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzFSP2f6T429mT-nBV8yGt_lYOhX7OsHpOhHR5K8AANiej38lXTB9pVolcnTzLfZiw2/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwj8ML352MD_BzeM4cw6Z7H3BaYJewx4J9KKuTTi363WH2Vjn2vqFfa7mIXtEUHm7T3/exec";
 
 const form = document.querySelector('.asist-form');
 const formMsg = document.getElementById('form-msg');
@@ -93,4 +93,5 @@ if (playBtn) {
     }
   });
 }
+
 
